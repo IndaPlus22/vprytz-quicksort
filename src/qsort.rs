@@ -6,7 +6,7 @@ pub fn quicksort(arr: &mut [i32]) {
 
 fn qsort(arr: &mut [i32], low: isize, high: isize) {
     if low < high {
-        let p = partition(arr, 0, high);
+        let p = partition(arr, low, high);
         qsort(arr, low, p - 1);
         qsort(arr, p + 1, high);
     }
