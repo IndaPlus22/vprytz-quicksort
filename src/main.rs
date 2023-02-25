@@ -16,33 +16,22 @@ use qsort::quicksort;
 
 /// Kattis calls main function to run your solution.
 fn main() {
-    // get standard input stream
-    let input = io::stdin();
+    let mut line = String::new();
+    io::stdin().lock().read_to_string(&mut line);
 
-    // get input lines as iterative
-    let mut lines = input.lock().lines().map(|_line| _line.ok().unwrap());
+    let mut arr: Vec<i32> = line
+        .split_whitespace()
+        .skip(1)
+        .map(|s| s.parse().unwrap())
+        .collect();
 
-    // get one line at a time, until EOF
-    while let Some(line) = lines.next() {
-        // input should be like "5 4 3 2 1", this we want to turn into i32 array
-        let mut arr: Vec<i32> = line
-            .split_whitespace()
-            .map(|s| s.parse().unwrap())
-            .collect();
+    quicksort(&mut arr);
 
-        // sort the array
-        quicksort(&mut arr);
-
-        // print the sorted array
-        println!(
-            "{}",
-            arr.iter()
-                .map(|i| i.to_string())
-                .collect::<Vec<String>>()
-                .join(" ")
-        );
-    }
-
-    eprintln!("Kattis skips this comment!");
-    //println!("Print to standard output.");
+    println!(
+        "{}",
+        arr.iter()
+            .map(|i| i.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 }
