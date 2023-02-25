@@ -28,7 +28,7 @@ fn qsort(arr: &mut [i32], low: isize, high: isize) {
 
 // Hoare’s Partition Scheme
 fn partition(arr: &mut [i32], low: isize, high: isize) -> isize {
-    let pivot = arr[high as usize - 1];
+    let pivot = arr[((low + high) / 2) as usize];
     let mut i = low - 1;
     let mut j = high + 1;
 
