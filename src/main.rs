@@ -17,7 +17,7 @@ use qsort::quicksort;
 /// Kattis calls main function to run your solution.
 fn main() {
     let mut line = String::new();
-    io::stdin().lock().read_to_string(&mut line);
+    io::stdin().lock().read_to_string(&mut line).unwrap();
 
     let mut arr: Vec<i32> = line
         .split_whitespace()
