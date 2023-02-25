@@ -21,7 +21,7 @@ fn main() {
 
     let mut arr: Vec<i32> = line
         .split_whitespace()
-        .skip(1)
+        .skip(1) // first integer is the length of the array, which we can safely ignore
         .map(|s| s.parse().unwrap())
         .collect();
 
