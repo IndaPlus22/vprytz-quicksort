@@ -20,25 +20,35 @@ fn qsort(arr: &mut [i32], low: isize, high: isize) {
             insertion_sort(arr, low, high);
         } else {
             let p = partition(arr, low, high);
-            qsort(arr, low, p - 1);
+            qsort(arr, low, p);
             qsort(arr, p + 1, high);
         }
     }
 }
 
-// Lomuto algorithm:
+// Hoare’s Partition Scheme
 fn partition(arr: &mut [i32], low: isize, high: isize) -> isize {
-    let pivot = high;
-    let mut i = low as isize - 1;
+    let pivot = arr[high as usize - 1];
+    let mut i = low - 1;
+    let mut j = high + 1;
 
-    for j in low..=high - 1 {
-        if arr[j as usize] <= arr[pivot as usize] {
+    loop {
+        i += 1;
+        while arr[i as usize] < pivot {
             i += 1;
-            arr.swap(i as usize, j as usize);
         }
+
+        j -= 1;
+        while arr[j as usize] > pivot {
+            j -= 1;
+        }
+
+        if i >= j {
+            return j;
+        }
+
+        arr.swap(i as usize, j as usize);
     }
-    arr.swap((i + 1) as usize, pivot as usize);
-    i + 1
 }
 
 // tests
