@@ -3,9 +3,9 @@
 Kattis submission ID, accepted (0,13 s).
 
 ```
-10583138
+10598034
 ```
 
 Proof:
 
-![proof](./proof_10583138.png)
+![proof](./proof_10598034.png)
